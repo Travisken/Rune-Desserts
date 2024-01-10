@@ -1,0 +1,203 @@
+@import '/src/sass/configStyles/config';
+
+
+.menu {
+    padding: $p-sm;
+    background-color: $white;
+    @include flex(left, center, center, column);
+
+    .menu-title {
+        .menu-title__heading {
+            color: $green;
+            font-size: $h3;
+            padding: 1em 0;
+            font-weight: 700;
+            font-family: $dms;
+            font-style: normal;
+            line-height: normal;
+        }
+    }
+
+    .menu-search {
+        .input-container {
+            width: 40em;
+            position: relative;
+            @include flex(left, center, center, row);
+        }
+
+        .icon {
+            right: 1.5em;
+            position: absolute;
+            top: calc(50% + 5px);
+            transform: translateY(calc(-50% - 5px));
+        }
+
+        .input {
+            width: 100%;
+            height: 60px;
+            padding: 0 1em;
+            transition: .2s linear;
+            border: 2.5px solid $green;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .input:focus {
+            outline: none;
+            border: 0.5px solid $green;
+            box-shadow: 5px 5px 0px $green;
+        }
+
+        .input-container>.icon {
+            animation: anim 1s linear infinite;
+        }
+
+        @keyframes anim {
+
+            0%,
+            100% {
+                transform: translateY(calc(-50% - 5px)) scale(1);
+            }
+
+            50% {
+                transform: translateY(calc(-50% - 5px)) scale(1.2);
+            }
+        }
+    }
+
+    .food-cards {
+        width: 100%;
+        display: grid;
+        padding: $p-md 0;
+        grid-template-columns: 1fr;
+
+        .food-card__heading {
+            color: $black;
+            font-weight: 500;
+            text-align: left;
+            padding: 1em 0;
+            font-style: normal;
+            line-height: normal;
+            font-family: $poppins;
+            font-size: calc($h3 - 0.5rem);
+        }
+
+        .food-card {
+            margin: 2em 0;
+            @include flex(left, center, center, column);
+
+
+            &__image {
+                object-fit: cover;
+            }
+
+            &__content {
+                width: 100%;
+                padding: 1em;
+                display: grid;
+                justify-content: space-between;
+
+                .food-card__title {
+                    color: $green;
+                    grid-area: 1/1;
+                    font-size: $h4;
+                    font-weight: 400;
+                    font-family: $dms;
+                    font-style: normal;
+                    line-height: normal;
+                }
+
+                .food-card__price {
+                    grid-area: 2/1;
+                    font-weight: 600;
+                    color: $dark;
+                    font-style: normal;
+                    line-height: normal;
+                    font-family: $poppins;
+                    font-size: calc($h3 - 0.5rem);
+                }
+
+                .food-card__button {
+                    @include button;
+                    width: 7.5rem;
+                    height: 3rem;
+                    padding: 1rem;
+                    grid-area: 1/2/3;
+                }
+            }
+        }
+    }
+
+    .menu-cta {
+        padding: $p-md 0 $p-sm;
+
+        .menu-cta__btn {
+            gap: 2em;
+            @include button;
+        }
+    }
+}
+
+@media (min-width: 35em) {
+    .food-card__container {
+        gap: 3em;
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+    }
+}
+
+@media (min-width: 70em) {
+    .menu {
+        padding: 0 $p-sm;
+
+        .food-card__container {
+            gap: 3em;
+            display: grid !important;
+            grid-template-columns: 1fr 1fr 1fr !important;
+        }
+
+        .menu-title {
+            width: 100%;
+
+            &__heading {
+                padding: 0;
+            }
+        }
+
+        .food-cards {
+            padding: 0;
+
+            .food-card__heading {
+                padding: 1em 0 0 !important;
+            }
+
+            .food-card__title {
+                font-size: calc($h4 - 0.3rem);
+            }
+
+            .food-card__button {
+                width: 10.75rem;
+                height: 3.75rem;
+            }
+        }
+
+        .menu-cta {
+            width: 100%;
+        }
+    }
+}
+
+
+@media (max-width: 40em) {
+    .input-container {
+        width: 25em !important;
+    }
+}
+
+
+@media (max-width: 30em) {
+    .input-container {
+        width: 22em !important;
+    }
+}
